@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusConnect</title>
+
+    <link rel="stylesheet" href="css/fontswesome.css">
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- ------------------------------------------------------Navbar css---------------------------------------------------------------------- -->
+
+    <style>
+        .navbar {
+            background-color: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-sticky {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Colors when scrolled */
+        .navbar-scrolled .nav-link,
+        .navbar-scrolled .navbar-brand,
+        .navbar-scrolled .navbar-toggler {
+            color: #212529 !important;
+        }
+
+        .navbar-scrolled #registerBtn {
+            background-color: transparent !important;
+            border: 1px solid #0d6efd !important;
+            color: #0d6efd !important;
+        }
+
+        .navbar-scrolled #registerBtn:hover {
+            background-color: #0d6efd !important;
+            border: 1px solid #0d6efd !important;
+            color: white !important;
+        }
+
+        /* Colors when at top */
+        .nav-link,
+        .navbar-brand,
+        .navbar-toggler {
+            color: white;
+        }
+
+        #registerBtn {
+            background-color: #0d6efd;
+            color: white;
+        }
+    </style>
+
+    <!-- ------------------------------------------------------Crousel css---------------------------------------------------------------------- -->
+
+
+    <style>
+        .card {
+            margin: 0 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img-top {
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-text {
+            display: -webkit-box;
+            /* -webkit-line-clamp: 2; */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 80px;
+        }
+
+        .card-type {
+            position: absolute;
+            top: 10px;
+            left: 1rem;
+            background-color: #285FFE;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .carousel-inner {
+            padding: 1rem 0;
+        }
+
+        .carousel-item {
+            transition: transform 0.6s ease;
+        }
+
+
+
+        /* Price Tag */
+        .price {
+            position: absolute;
+            top: 150px;
+            /* adjust placement */
+            right: 1rem;
+            background-color: #285FFE;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+            white-space: nowrap;
+        }
+
+
+        .price_free {
+            position: absolute;
+            top: 150px;
+            /* adjust placement */
+            left: 1rem;
+            background-color: green;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+            white-space: nowrap;
+        }
+
+        .price_ex {
+            position: absolute;
+            top: 150px;
+            /* adjust placement */
+            left: 1rem;
+            background-color: rgb(255, 0, 0);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+            white-space: nowrap;
+        }
+
+        @media (min-width: 768px) {
+
+            .carousel-item.active,
+            .carousel-item-next,
+            .carousel-item-prev {
+                display: flex;
+            }
+        }
+
+        .event-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .container {
+            max-width: 1200px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- ------------------------------------------------------Navbar------------------------------------------------------------------------- -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a href="index.html" class="navbar-brand text-white" id="navbarLogo">
+                <span class="fw-bold">Campus<span class="text-primary">Connect</span></span>
+            </a>
+
+            <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link text-white fw-semibold">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#events" class="nav-link text-white fw-semibold">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="register.html" id="registerBtn" class="btn btn-primary fw-semibold mx-lg-3 mt-lg-0">
+                            Register
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ------------------------------------------------------Hero Section---------------------------------------------------------------------- -->
+
+    <section class="position-relative d-flex align-items-center justify-content-center"
+        style="height: 100vh; overflow: hidden;">
+        <img src="images/event_hero.jpg" alt="Hero Image" class="position-absolute w-100 h-100"
+            style="object-fit: cover; z-index: 1;">
+        <div class="position-absolute w-100 h-100" style="background-color: rgba(0, 0, 0, 0.5); z-index: 2;"></div>
+        <div class="position-relative text-center text-white" style="z-index: 3;">
+            <h1 class="display-4 fw-bold text-white">Welcome to Our Event</h1>
+            <p class="lead">Experience the future of innovation with us</p>
+            <a href="register.html" class="btn btn-primary mt-3">Register Now</a>
+        </div>
+    </section>
+
+    <!-- -------------------------------------------------Events Carousel---------------------------------------------------------------------- -->
+
+
+    <div class="container py-5">
+        <h2 class="mb-4">Events</h2>
+
+        <div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <!-- First slide -->
+                <div class="carousel-item active">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0">
+                            <div class="card">
+                                <div class="card-type text-bg-primary">Trip</div>
+                                <img src="images/events/e1.jpg" class="card-img-top" alt="Workshop Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">AI Bootcamp 2025</h5>
+                                    <p class="card-text">A hands-on full-day AI workshop covering ML, NLP, and projects.
+                                        Ideal for all tech enthusiasts.</p>
+                                    <div class="fw-semibold">Venue: Iqbal Hall</div>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> June 10, 2025 • 2:00 PM - 5:00 PM
+                                    </div>
+                                    <span class="price">PKR 2000</span>
+                                    <a href="register.html?type=event&name=AI%20Bootcamp%202025"
+                                        class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0 d-none d-md-block">
+                            <div class="card">
+                                <div class="card-type">Leadership</div>
+                                <img src="images/events/e2.jpg" class="card-img-top" alt="Seminar Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Corporate Leadership Summit</h5>
+                                    <p class="card-text">Hear from top CEOs and HR leaders about industry expectations,
+                                        leadership, and workplace evolution.</p>
+                                    <div class="fw-semibold">Venue: Iqbal Hall</div>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> June 15, 2025 • 10:00 AM - 12:00 PM
+                                    </div>
+                                    <span class="price">PKR 2000</span>
+                                    <a href="register.html?type=event&name=Corporate%20Leadership%20Summit" class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0 d-none d-lg-block">
+                            <div class="card">
+                                <div class="card-type">Climate</div>
+                                <img src="images/events/e3.jpg" class="card-img-top" alt="Conference Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Climate Change</h5>
+                                    <p class="card-text">A collaborative event with NGOs, environmentalists, and
+                                        students tackling climate issues through activities.</p>
+                                    <div class="fw-semibold">Venue: Iqbal Hall</div>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> June 20, 2025 • 9:00 AM - 4:00 PM
+                                    </div>
+                                    <span class="price">PKR 2000</span>
+                                    <a href="register.html?type=event&name=Climate%20Change" class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Second slide -->
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0">
+                            <div class="card">
+                                <div class="card-type">Arts</div>
+                                <img src="images/events/e4.jpg" class="card-img-top" alt="Webinar Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Artistan Expo</h5>
+                                    <p class="card-text">Showcasing student art, crafts, and handmade products. A blend
+                                        of creativity, color, and commerce.</p>
+                                    <div class="fw-semibold">Venue: Iqbal Hall</div>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> June 25, 2025 • 1:00 PM - 3:00 PM
+                                    </div>
+                                    <span class="price">PKR 2000</span>
+                                    <a href="register.html?type=event&name=Artistan%20Expo" class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0 d-none d-md-block">
+                            <div class="card">
+                                <div class="card-type">Festival</div>
+                                <img src="images/events/e5.jpg" class="card-img-top" alt="Workshop Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Pindi LitFest</h5>
+                                    <p class="card-text">Literature, poetry, and storytelling take center stage.
+                                        Celebrate local authors and cultural voices.</p>
+                                    <div class="fw-semibold">Venue: Iqbal Hall</div>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> July 5, 2025 • 10:00 AM - 4:00 PM
+                                    </div>
+                                    <span class="price">PKR 2000</span>
+                                    <a href="register.html?type=event&name=Pindi%20LitFest" class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0 d-none d-lg-block">
+                            <div class="card">
+                                <div class="card-type">Hackathon</div>
+                                <img src="images/events/e6.jpg" class="card-img-top" alt="Masterclass Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">CodeStorm Hackathon</h5>
+                                    <p class="card-text">A 24-hour coding challenge where teams compete to solve
+                                        real-world tech problems. Innovation meets adrenaline.</p>
+                                    <div class="fw-semibold">Venue: Iqbal Hall</div>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> July 12, 2025 • 9:00 AM - 5:00 PM
+                                    </div>
+                                    <span class="price">PKR 2000</span>
+                                    <a href="register.html?type=event&name=CodeStorm%20Hackathon" class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Third slide -->
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0">
+                            <div class="card">
+                                <div class="card-type">Summit</div>
+                                <img src="images/events/e7.jpg" class="card-img-top" alt="Summit Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Digital Marketing Summit</h5>
+                                    <p class="card-text">Connect with marketing experts and discover the latest
+                                        strategies for digital marketing success in 2025.</p>
+                                    <div class="fw-semibold">Venue: Iqbal Hall</div>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> July 18, 2025 • 9:00 AM - 6:00 PM
+                                    </div>
+                                    <span class="price">PKR 2000</span>
+                                    <a href="register.html?type=event&name=Digital%20Marketing%20Summit" class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0 d-none d-md-block">
+                            <div class="card">
+                                <div class="card-type">Bootcamp</div>
+                                <img src="images/events/e8.jpg" class="card-img-top" alt="Bootcamp Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Full-Stack Developer Bootcamp</h5>
+                                    <p class="card-text">Intensive training program covering frontend, backend, and
+                                        database technologies for aspiring developers.</p>
+                                    <div class="fw-semibold">Venue: Iqbal Hall</div>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> July 25, 2025 • 10:00 AM - 4:00 PM
+                                    </div>
+                                    <span class="price">PKR 2000</span>
+                                    <a href="register.html?type=event&name=Full-Stack%20Developer%20Bootcamp" class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0 d-none d-lg-block">
+                            <div class="card">
+                                <div class="card-type">Panel</div>
+                                <img src="images/events/e9.jpg" class="card-img-top" alt="Panel Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Women in Tech</h5>
+                                    <p class="card-text">An inspiring panel discussion featuring successful women
+                                        leaders sharing their experiences in the tech industry.</p>
+                                    <div class="fw-semibold">Venue: Iqbal Hall</div>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> August 2, 2025 • 1:00 PM - 3:00 PM
+                                    </div>
+                                    <span class="price">PKR 2000</span>
+                                    <a href="register.html?type=event&name=Women%20in%20Tech" class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- -------------------------------------------------Trips Carousel---------------------------------------------------------------------- -->
+
+
+    <div class="container py-5">
+        <h2 class="mb-4">Trips</h2>
+
+        <div id="eventCarousel1" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <!-- First slide -->
+                <div class="carousel-item active">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0">
+                            <div class="card">
+                                <img src="images/trips/t1.jpg" class="card-img-top" alt="Workshop Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Hunza Valley & Attabad Lake</h5>
+                                    <p class="card-text">A scenic journey to the breathtaking Hunza Valley and serene
+                                        Attabad Lake.</p>
+                                    <div class="event-date mt-2">
+                                        <i class="fas fa-calendar"></i>June 5, 2025 • 07:00 AM (Departure Time)
+                                    </div>
+                                    <span class="price">PKR 5000</span>
+                                    <a href="register.html?type=trip&name=Hunza%20Valley%20%26%20Attabad%20Lake"
+                                        class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0 d-none d-md-block">
+                            <div class="card">
+                                <img src="images/trips/t2.jpg" class="card-img-top" alt="Seminar Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Gwadar Beach Retreat</h5>
+                                    <p class="card-text">Experience the tranquil shores of Gwadar with bonfires, seafood
+                                        feasts, and sea adventures. Perfect summer escape.</p>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> June 15, 2025 • 10:00 AM (Departure)
+                                    </div>
+                                    <span class="price">PKR 15000</span>
+                                    <a href="register.html?type=trip&name=Gwadar%20Beach%20Retreat"
+                                        class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0 d-none d-lg-block">
+                            <div class="card">
+                                <img src="images/trips/t3.jpg" class="card-img-top" alt="Conference Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Swat Valley Cultural Tour</h5>
+                                    <p class="card-text">Dive into Swat’s rich heritage, ancient architecture, and lush
+                                        green valleys. A cultural and historical delight.</p>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> June 20, 2025 • 9:00 AM (Departure)
+                                    </div>
+                                    <span class="price">PKR 4500</span>
+                                    <a href="register.html?type=trip&name=Swat%20Valley%20Cultural%20Tour"
+                                        class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Second slide -->
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0">
+                            <div class="card">
+                                <img src="images/trips/t4.jpg" class="card-img-top" alt="Webinar Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Ratti Gali Lake Trek</h5>
+                                    <p class="card-text">An unforgettable trek to the stunning alpine Ratti Gali Lake. A
+                                        mix of thrill, beauty, and camping in the wild.</p>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> June 25, 2025 • 7:00 AM (Departure)
+                                    </div>
+                                    <span class="price">PKR 4000</span>
+                                    <a href="register.html?type=trip&name=Ratti%20Gali%20Lake%20Trek"
+                                        class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0 d-none d-md-block">
+                            <div class="card">
+                                <img src="images/trips/t5.jpg" class="card-img-top" alt="Workshop Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Cholistan Desert Safari</h5>
+                                    <p class="card-text">Ride through sand dunes, enjoy camel rides, and attend a desert
+                                        bonfire night. A unique cultural and desert-life experience.</p>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> July 5, 2025 • 10:00 AM (Departure)
+                                    </div>
+                                    <span class="price">PKR 2000</span>
+                                    <a href="register.html?type=trip&name=Cholistan%20Desert%20Safari"
+                                        class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0 d-none d-lg-block">
+                            <div class="card">
+                                <img src="images/trips/t6.jpg" class="card-img-top" alt="Masterclass Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Fairy Meadows Weekend Trek</h5>
+                                    <p class="card-text">Hike through pine forests and glaciers to reach the world’s
+                                        most scenic campsite. A once-in-a-lifetime chance to witness Nanga Parbat.</p>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> July 12, 2025 • 9:00 AM (2 Day Trip)
+                                    </div>
+                                    <span class="price">PKR 8000</span>
+                                    <a href="register.html?type=trip&name=Fairy%20Meadows%20Weekend%20Trek"
+                                        class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Third slide -->
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0">
+                            <div class="card">
+                                <img src="images/trips/t7.jpeg" class="card-img-top" alt="Summit Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Neelum Valley Waterfall</h5>
+                                    <p class="card-text"> A short trip to the hidden waterfalls and lush greenery of
+                                        Neelum Valley. Perfect for students who want a quick nature reset.</p>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> August 18, 2025 • 7:00 AM (Departure)
+                                    </div>
+                                    <span class="price">PKR 7000</span>
+                                    <a href="register.html?type=trip&name=Neelum%20Valley%20Waterfall"
+                                        class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0 d-none d-md-block">
+                            <div class="card">
+                                <img src="images/trips/t8.jpg" class="card-img-top" alt="Bootcamp Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Skardu & Shigar Valley Exploration</h5>
+                                    <p class="card-text">Travel to the majestic landscapes of Skardu and explore the
+                                        ancient Shigar Fort. High-altitude magic and rich culture await.</p>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> July 25, 2025 • 10:00 AM (4 Day Trip)
+                                    </div>
+                                    <span class="price">PKR 15000</span>
+                                    <a href="register.html?type=trip&name=Skardu%20%26%20Shigar%20Valley%20Exploration" class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0 d-none d-lg-block">
+                            <div class="card">
+                                <img src="images/trips/t9.jpg" class="card-img-top" alt="Panel Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Mushkpuri & Miranjani Day Hike</h5>
+                                    <p class="card-text"> A refreshing one-day hike through pine forests and misty
+                                        trails. Great for beginners and nature lovers.</p>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> August 2, 2025 • 7:00 AM (Departure)
+                                    </div>
+                                    <span class="price">PKR 2000</span>
+                                    <a href="register.html?type=trip&name=Mushkpuri%20%26%20Miranjani%20Day%20Hike" class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel1" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel1" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- -------------------------------------------------Seminars Carousel---------------------------------------------------------------------- -->
+
+    <div class="container py-5">
+        <h2 class="mb-4">Seminars</h2>
+
+        <div id="eventCarousel2" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <!-- First slide -->
+                <div class="carousel-item active">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0">
+                            <div class="card">
+                                <div class="card-type text-bg-primary">Ai</div>
+                                <img src="images/seminars/s1.jpg" class="card-img-top" alt="Workshop Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">AI for Everyone</h5>
+                                    <p class="card-text">A simple and interactive session introducing AI concepts. No
+                                        tech background required — just curiosity.</p>
+                                    <div class="fw-semibold">Venue: Iqbal Hall</div>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> June 10, 2025 • 10:00 PM
+                                    </div>
+                                    <span class="price_free">Free For All</span>
+                                    <a href="register.html?type=seminar&name=AI%20for%20Everyone"
+                                        class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0 d-none d-md-block">
+                            <div class="card">
+                                <div class="card-type">UI/UX</div>
+                                <img src="images/seminars/s2.jpg" class="card-img-top" alt="Seminar Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">The Psychology Behind UI/UX</h5>
+                                    <p class="card-text">Understand how users think and what makes a design effective.
+                                        Essential for design, tech, and marketing students.</p>
+                                    <div class="fw-semibold">Venue: Jinnah Hall</div>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> June 15, 2025 • 10:00 AM
+                                    </div>
+                                    <span class="price_free">Free For All</span>
+                                    <a href="register.html?type=seminar&name=The%20Psychology%20Behind%20UI%2FUX" class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0 d-none d-lg-block">
+                            <div class="card">
+                                <div class="card-type">Startups</div>
+                                <img src="images/seminars/s4.jpg" class="card-img-top" alt="Conference Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">From Idea to Startup</h5>
+                                    <p class="card-text">Learn how to convert ideas into impactful startups. Pitching,
+                                        planning, and funding — all in one session.</p>
+                                    <div class="fw-semibold">Venue: Iqbal Hall</div>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> June 20, 2025 • 9:00 AM
+                                    </div>
+                                    <span class="price_free">Free For All</span>
+                                    <a href="register.html?type=seminar&name=From%20Idea%20to%20Startup" class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Second slide -->
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0">
+                            <div class="card">
+                                <div class="card-type">Cybersecurity</div>
+                                <img src="images/seminars/s5.jpg" class="card-img-top" alt="Webinar Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Cybersecurity Basics</h5>
+                                    <p class="card-text">Stay secure in the digital world with practical tips and
+                                        real-life examples. Best for daily device users.</p>
+                                    <div class="fw-semibold">Venue: Jinnah Hall</div>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> June 25, 2025 • 12:00 PM
+                                    </div>
+                                    <span class="price_free">Free For All</span>
+                                    <a href="register.html?type=seminar&name=Cybersecurity%20Basics" class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0 d-none d-md-block">
+                            <div class="card">
+                                <div class="card-type">Festival</div>
+                                <img src="images/seminars/s3.jpg" class="card-img-top" alt="Workshop Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Climate Change: Impact & Action</h5>
+                                    <p class="card-text">Learn how climate change affects Pakistan and what steps you
+                                        can take. A must-attend for environmental awareness.</p>
+                                    <div class="fw-semibold">Venue: Iqbal Hall</div>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> July 5, 2025 • 10:00 AM
+                                    </div>
+                                    <span class="price_free">Free For All</span>
+                                    <a href="register.html?type=seminar&name=Climate%20Change" class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0 d-none d-lg-block">
+                            <div class="card">
+                                <div class="card-type">Research</div>
+                                <img src="images/events/e6.jpg" class="card-img-top" alt="Masterclass Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">The Power of Research</h5>
+                                    <p class="card-text">A motivational session on how research builds futures and
+                                        innovation. Ideal for final-year students and scholars.</p>
+                                    <div class="fw-semibold">Venue: Al-Razi Hall, Old MLT</div>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> July 12, 2025 • 9:00 AM - 5:00 PM
+                                    </div>
+                                    <span class="price_ex">Exclusive For PHD Students</span>
+                                    <a href="register.html?type=seminar&name=The%20Power%20of%20Research" class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Third slide -->
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0">
+                            <div class="card">
+                                <div class="card-type">Freelancing</div>
+                                <img src="images/seminars/s7.jpg" class="card-img-top" alt="Summit Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Freelancing:Your Digital Career Start</h5>
+                                    <p class="card-text">Learn how to make money online through freelance platforms.
+                                        Includes tips for beginners on Fiverr and Upwork.</p>
+                                    <div class="fw-semibold">Venue: Iqbal Hall</div>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> July 18, 2025 • 9:00 AM - 12:00 PM
+                                    </div>
+                                    <span class="price">PKR 250</span>
+                                    <a href="register.html?type=seminar&name=Freelancing%3AYour%20Digital%20Career%20Start" class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0 d-none d-md-block">
+                            <div class="card">
+                                <div class="card-type">Workshop</div>
+                                <img src="images/seminars/s8.jpg" class="card-img-top" alt="Bootcamp Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Design Thinking Workshop</h5>
+                                    <p class="card-text"> Solve real-world problems creatively using design thinking.
+                                        Includes interactive team activities and brainstorming.</p>
+                                    <div class="fw-semibold">Venue: Iqbal Hall</div>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> July 25, 2025 • 10:00 AM - 12:00 PM
+                                    </div>
+                                    <span class="price_free">Free For All</span>
+                                    <a href="register.html?type=seminar&name=Design%20Thinking%20Workshop" class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 d-flex mb-3 mb-lg-0 d-none d-lg-block">
+                            <div class="card">
+                                <div class="card-type">Digital Marketing</div>
+                                <img src="images/seminars/s9.jpg" class="card-img-top" alt="Panel Image">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Digital Marketing in 2025</h5>
+                                    <p class="card-text"> Learn how to build a brand online and reach the right
+                                        audience. Latest tools, strategies, and trends included.</p>
+                                    <div class="fw-semibold">Venue: Iqbal Hall</div>
+                                    <div class="event-date mt-2 mb-3">
+                                        <i class="fas fa-calendar"></i> August 2, 2025 • 1:00 PM - 3:00 PM
+                                    </div>
+                                    <span class="price_free">Free For All</span>
+                                    <a href="register.html?type=seminar&name=Digital%20Marketing%20in%202025" class="btn btn-primary mt-auto">Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel2" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel2" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ------------------------------------------------------Strips------------------------------------------------------------------------- -->
+
+    <div class="container-fluid logo-strip my-4 mb-5">
+        <div class="d-flex justify-content-center align-items-center flex-wrap gap-5">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" class
+                alt="HTML5 Logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="CSS3 Logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg" alt="Bootstrap Logo">
+            <img src="https://www.svgrepo.com/show/303206/javascript-logo.svg" alt="JavaScript Logo">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub Logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Sass_Logo_Color.svg" alt="Sass Logo">
+        </div>
+    </div>
+
+
+    <!-- ------------------------------------------------------Footer------------------------------------------------------------------------- -->
+
+    <footer class="footer bg-white text-dark py-4 py-md-3">
+        <div class="container">
+            <div class="row align-items-center text-center text-md-start">
+                <!-- Logo/Brand - Centered on mobile, left on larger screens -->
+                <div class="col-12 col-md-4 mb-3 mb-md-0">
+                    <div class="footer-logo fw-bold fs-5">SEMS</div>
+                </div>
+
+                <!-- Copyright - Centered on all screens -->
+                <div class="col-12 col-md-4 mb-3 mb-md-0">
+                    <div class="footer-copyright">
+                        © 2025 CampusConnect. All Rights Reserved.
+                    </div>
+                </div>
+
+                <!-- Links - Centered on mobile, right-aligned on larger screens -->
+                <div class="col-12 col-md-4 mb-2 mb-md-0">
+                    <div class="footer-links text-center text-md-end">
+                        <a href="#about" class="text-dark me-3 d-inline-block mb-2 mb-md-0">About</a>
+                        <a href="events.html" class="text-dark d-inline-block">Events</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/crousel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+
+    <script>
+        function handleScroll() {
+            const navbar = document.querySelector('.navbar');
+            const navbarCollapse = document.getElementById('navbarContent');
+
+            function updateNavbar() {
+                const isScrolled = window.scrollY > 1 || navbarCollapse.classList.contains('show');
+                if (isScrolled) {
+                    navbar.classList.add('navbar-sticky', 'navbar-scrolled');
+                } else {
+                    navbar.classList.remove('navbar-sticky', 'navbar-scrolled');
+                }
+            }
+
+            window.addEventListener('scroll', updateNavbar);
+            navbarCollapse.addEventListener('shown.bs.collapse', updateNavbar);
+            navbarCollapse.addEventListener('hidden.bs.collapse', updateNavbar);
+        }
+
+        handleScroll();
+    </script>
+
+</body>
+
+</html>
