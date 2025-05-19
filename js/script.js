@@ -51,26 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
   handleScroll();
 });
 
-// <!-- ------------------------------------------------------Modal------------------------------------------------------------------------- -->
-
-// 1) Select your form and initialize the Bootstrap Modal
-
-const form = document.getElementById('contactForm');
-// or 'form' if it's the only form
-const thankYouModal = new bootstrap.Modal(document.getElementById('thankYouModal'));
-
-form.addEventListener('submit', function (e) {
-  // 2) Prevent the browser from performing the normal POST / reload
-  e.preventDefault();
-  // 3) Show the thank-you popup
-  thankYouModal.show();
-
-  setTimeout(() => thankYouModal.hide(), 10000);  //10second
-
-  // 4) Reset all form fields back to their defaults
-  form.reset();
-});
-
 
 // <!-- --------------------------------------------------Hero text change------------------------------------------------------------------------- -->
  const texts = [" Events", " Trips", " Seminars"];
@@ -87,24 +67,3 @@ form.addEventListener('submit', function (e) {
 document.addEventListener('DOMContentLoaded', handleScroll);
 
 document.addEventListener('DOMContentLoaded', incrementStats);
-
-
-// <!-- ------------------------------------------------------Modal------------------------------------------------------------------------- -->
-
-// 1) Select your form and initialize the Bootstrap Modal
-
-const form = document.getElementById('registrationForm');
-// or 'form' if it's the only form
-const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-
-form.addEventListener('submit', function (e) {
-  // 2) Prevent the browser from performing the normal POST / reload
-  e.preventDefault();
-  // 3) Show the thank-you popup
-  successModal.show();
-
-  setTimeout(() => successModal.hide(), 10000);  //10second
-
-  // 4) Reset all form fields back to their defaults
-  form.reset();
-});
